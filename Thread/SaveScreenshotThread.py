@@ -1,4 +1,3 @@
-#/usr/bin/env python
 
 
 from PyQt4 import QtCore

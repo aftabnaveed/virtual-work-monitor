@@ -1,28 +1,29 @@
 #!/usr/bin/env python
 
 from PyQt4 import QtCore, QtGui
-#from SaveScreenshotThread import SaveScreenshotThread
-
+from Thread import SaveScreenshotThread
+from MainGui import MainGui
 
 class Deewa(QtGui.QWidget):
     def __init__(self):
         super(Deewa, self).__init__()
-        self.deewaLabel = QtGui.QLabel()
-        self.deewaLabel.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        self.deewaLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.deewaLabel.setMinimumSize(240, 160)
 
-        #self.createOptionsGroupBox()
-        #self.createButtonsLayout()
+        self.gui = MainGui()
+        self.screenshotLabel = self.gui.shootScreen()
+        self.optionsGroupBox = self.gui.createOptionsGroupBox()
+        self.buttonsLayout = self.gui.createButtonsLayout()
 
         mainLayout = QtGui.QVBoxLayout()
-        mainLayout.addWidget(self.deewaLabel)
-        #mainLayout.addWidget(self.optionsGroupBox)
-        #mainLayout.addLayout(self.buttonsLayout)
+        mainLayout.addWidget(self.screenshotLabel)
+        mainLayout.addWidget(self.optionsGroupBox)
+        mainLayout.addLayout(self.buttonsLayout)
         self.setLayout(mainLayout)
 
-        self.setWindowTitle("Screenshot")
+
+        self.setWindowTitle("Work Monitor")
         self.resize(300, 200)
+
+
 
 
 
